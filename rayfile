@@ -40,7 +40,7 @@ pipeline {
         stage ('Deploy to Tomee') {
            steps {
             script {
-          deploy adapters: [tomcat9(credentialsId: 'raytomcat', path: '', url: 'http://34.228.81.108:8888')], contextPath: '/primus-app', onFailure: false, war: 'webapp/target/*.war'
+          deploy adapters: [tomcat9(credentialsId: 'raytomcat', path: '', url: 'http://174.129.72.239:9000')], contextPath: '/primus-app', onFailure: false, war: 'webapp/target/*.war'
             }
            }
         }
