@@ -22,7 +22,7 @@ pipeline {
         
         stage('Code Scan'){
             steps {
-              withSonarQubeEnv('sonarqube') {
+              withSonarQubeEnv('sonar') {
             sh "mvn clean verify sonar:sonar -Dsonar.projectKey=devops"
               }
                 
@@ -40,7 +40,7 @@ pipeline {
         stage ('Deploy to Tomee') {
            steps {
             script {
-          deploy adapters: [tomcat9(credentialsId: 'raytomcat', path: '', url: 'http://174.129.159.36:8888')], contextPath: '/primus-app', onFailure: false, war: 'webapp/target/*.war'
+          deploy adapters: [tomcat9(credentialsId: 'raytomcat', path: '', url: 'http://34.201.135.170:8888')], contextPath: '/primus-app', onFailure: false, war: 'webapp/target/*.war'
             }
            }
         }
